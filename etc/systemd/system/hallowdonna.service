@@ -1,0 +1,35 @@
+[Unit]
+Description=Hallowdonna doorbell trigger
+#After=remote-fs.target
+#multi-user.target network.target
+
+[Service]
+#Type=simple
+#User=pi
+#Group=pi
+#WorkingDirectory=/home/pi
+#ExecStart=/home/pi/hallowdonna/knocker.py
+ExecStart=/usr/bin/knocker.py
+TimeoutStopSec=5
+#KillMode=control-group
+KillMode=process
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
+
+#[Unit]
+#Description=Hallowdonna
+#
+#[Service]
+#Type=simple
+#User=pi
+#Group=pi
+#ExecStart=/home/pi/hallowdonna/knocker.py
+#Restart=always
+#RestartSec=1
+#
+#[Install]
+#WantedBy=mult-user.target
